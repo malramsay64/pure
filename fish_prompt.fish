@@ -88,31 +88,6 @@ function pre_prompt --on-event fish_prompt
   if test -n "$is_git_repository"
     set git_branch_name (__parse_git_branch)
 
-    # # Check if there are files to commit
-    # set -l is_git_dirty (command git status --porcelain --ignore-submodules ^/dev/null)
-
-    # if test -n "$is_git_dirty"
-      # set git_dirty $pure_symbol_git_dirty
-    # end
-
-    # # Check if there is an upstream configured
-    # command git rev-parse --abbrev-ref '@{upstream}' >/dev/null ^&1; and set -l has_upstream
-    # if set -q has_upstream
-      # set -l git_status (string split ' ' (string replace -ar '\s+' ' ' (command git rev-list --left-right --count 'HEAD...@{upstream}')))
-
-      # set -l git_arrow_left $git_status[1]
-      # set -l git_arrow_right $git_status[2] 
-
-      # # If arrow is not "0", it means it's dirty
-      # if test $git_arrow_left != 0
-        # set git_arrows " $pure_symbol_git_up_arrow"
-      # end
-
-      # if test $git_arrow_right != 0
-        # set git_arrows " $git_arrows$pure_symbol_git_down_arrow"
-      # end
-    end
-
     # Format Git prompt output
     set pre_prompt $pre_prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows$pure_color_normal "
   end
